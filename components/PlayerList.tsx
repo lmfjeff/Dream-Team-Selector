@@ -4,9 +4,9 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import Loading from "./Loading";
 import { useDebouncedCallback } from "use-debounce";
+import CharacterImage from "./CharacterImage";
 
-export default function PlayerList() {
-  const [characters, setCharacters] = useState([]);
+export default function PlayerList({ characters, setCharacters }: any) {
   const [paginationData, setPaginationData] = useState<any>({});
   const [fetching, setFetching] = useState(false);
   const [page, setPage] = useState(1);
@@ -20,8 +20,11 @@ export default function PlayerList() {
     () => paginationData.offset / paginationData.limit + 1,
     [paginationData]
   );
-  const isFirstPage = useMemo(() => currentPage === 1, [currentPage])
-  const isLastPage = useMemo(() => currentPage === totalPage, [currentPage, totalPage])
+  const isFirstPage = useMemo(() => currentPage === 1, [currentPage]);
+  const isLastPage = useMemo(
+    () => currentPage === totalPage,
+    [currentPage, totalPage]
+  );
 
   const debounced = useDebouncedCallback((value) => {
     setSearchInput(value);
@@ -63,11 +66,15 @@ export default function PlayerList() {
         />
         {characters.length > 0 && !fetching && (
           <div className="flex gap-2">
-            {!isFirstPage && <button onClick={() => setPage((v) => v - 1)}>◀</button>}
+            {!isFirstPage && (
+              <button onClick={() => setPage((v) => v - 1)}>◀</button>
+            )}
             <div>
               Page {currentPage} / {totalPage}
             </div>
-            {!isLastPage && <button onClick={() => setPage((v) => v + 1)}>▶</button>}
+            {!isLastPage && (
+              <button onClick={() => setPage((v) => v + 1)}>▶</button>
+            )}
           </div>
         )}
       </div>
@@ -78,18 +85,7 @@ export default function PlayerList() {
       ) : (
         <div className="flex flex-wrap">
           {characters.map((c: any) => (
-            <div key={c.id}>
-              {c.thumbnail.path.includes("image_not_available") ? (
-                <div className="border rounded-full size-[100px] flex justify-center items-center">
-                  <div className="text-sm text-center">{c.name}</div>
-                </div>
-              ) : (
-                <img
-                  src={`${c.thumbnail.path}.${c.thumbnail.extension}`}
-                  className="border rounded-full size-[100px]"
-                />
-              )}
-            </div>
+            <CharacterImage key={c.id} character={c} />
           ))}
         </div>
       )}
