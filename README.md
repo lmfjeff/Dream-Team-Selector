@@ -1,3 +1,14 @@
+## TODO
+- fetch marvel api
+- desktop / mobile friendly
+- hide api key behind nextjs backend
+- search (frontend / backend api side?)
+- drag n drop
+
+##
+- sign up for marvel developer api
+- copy .env.sample to .env, fill out .env
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
