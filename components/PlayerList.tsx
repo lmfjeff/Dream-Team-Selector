@@ -6,7 +6,12 @@ import Loading from "./Loading";
 import { useDebouncedCallback } from "use-debounce";
 import CharacterImage from "./CharacterImage";
 
-export default function PlayerList({ characters, setCharacters }: any) {
+export default function PlayerList({
+  characters,
+  setCharacters,
+  selected,
+  setSelected,
+}: any) {
   const [paginationData, setPaginationData] = useState<any>({});
   const [fetching, setFetching] = useState(false);
   const [page, setPage] = useState(1);
@@ -85,7 +90,12 @@ export default function PlayerList({ characters, setCharacters }: any) {
       ) : (
         <div className="flex flex-wrap">
           {characters.map((c: any) => (
-            <CharacterImage key={c.id} character={c} />
+            <CharacterImage
+              key={c.id}
+              character={c}
+              selected={selected}
+              setSelected={setSelected}
+            />
           ))}
         </div>
       )}

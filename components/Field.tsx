@@ -1,25 +1,34 @@
 import Image from "next/image";
 import { useDroppable } from "@dnd-kit/core";
+import { cn } from "@/utils/tw";
 
-export default function Field({ src, num, squad }: any) {
+export default function Field({ src, num, squad, setSquad, isDragging, selected, setSelected }: any) {
   const { isOver, setNodeRef } = useDroppable({
     id: num,
   });
-  const style = {
-    border: isOver ? "1px solid red" : undefined,
-  };
 
   return (
-    <div className="relative">
-      <Image
-        src={src}
-        alt=""
-        width={400}
-        height={400}
-        ref={setNodeRef}
-        style={style}
-      />
-      <div className="absolute top-0 left-0 flex">
+    <div className="relative border-collapse">
+      <Image src={src} alt="" width={400} height={400} ref={setNodeRef} />
+      <div
+        className={cn("absolute top-0 left-0 bottom-0 right-0 flex", {
+          "border border-red-500": isDragging || !!selected,
+          "bg-[#00800080]": isOver,
+        })}
+        onClick={() => {
+          if (selected) {
+            setSquad((v: any) => [
+              ...v,
+              {
+                characterId: selected.id,
+                fieldId: num,
+                character: selected,
+              },
+            ]);
+            setSelected(null)
+          }
+        }}
+      >
         {squad
           .filter((sq: any) => sq.fieldId === num)
           .map((sq: any) => (
