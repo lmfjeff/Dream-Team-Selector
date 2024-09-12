@@ -7,6 +7,7 @@ import { useDebouncedCallback } from "use-debounce";
 import CharacterImage from "./CharacterImage";
 
 export default function PlayerList({
+  squad,
   characters,
   setCharacters,
   selected,
@@ -89,14 +90,20 @@ export default function PlayerList({
         </div>
       ) : (
         <div className="flex flex-wrap">
-          {characters.map((c: any) => (
-            <CharacterImage
-              key={c.id}
-              character={c}
-              selected={selected}
-              setSelected={setSelected}
-            />
-          ))}
+          {characters.map((c: any) => {
+            const disabled = squad
+              .map((s: any) => s.characterId)
+              .includes(c.id);
+            return (
+              <CharacterImage
+                disabled={disabled}
+                key={c.id}
+                character={c}
+                selected={selected}
+                setSelected={setSelected}
+              />
+            );
+          })}
         </div>
       )}
     </div>

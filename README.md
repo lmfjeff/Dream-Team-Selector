@@ -2,10 +2,8 @@
 Build a 5-a-side soccer team with Marvel characters
 
 ## TODO
-- drag n drop hover style
-- limit 5 players / limit at least 1 for each pos
-- style
 - share button (social media / download image)
+- style
 
 ## Tech Stack
 - next.js
@@ -29,3 +27,8 @@ npm run dev
 - Vercel
 
 ## Static export
+
+## Future Improvement
+- Fetch All Marvel Characters Data into our own DB to avoid hitting rate limit
+- Fetch Marvel Characters from our own DB to improve fetching filter (Marvel API only provide filter by exact name & nameStartsWith)
+- use CDN to cache static page to improve load time
