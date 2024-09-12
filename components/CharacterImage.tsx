@@ -21,7 +21,7 @@ export default function CharacterImage({
     <div ref={setNodeRef} style={style}>
       <img
         src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-        className={cn("shadow-lg rounded-full size-[100px] cursor-pointer", {
+        className={cn("shadow-lg rounded-full size-[80px] cursor-pointer", {
           "outline outline-green-500 outline-2": selected?.id === character.id,
           "opacity-50": disabled,
         })}
@@ -36,11 +36,11 @@ export default function CharacterImage({
         }}
       />
       <div
-        className="bg-yellow-500 w-[90px] line-clamp-1 text-center text-xs cursor-grab rounded-md"
+        className="bg-yellow-500 w-[70px] h-[30px] text-[10px] cursor-grab rounded-md flex justify-center items-center text-center"
         {...listeners}
         {...attributes}
       >
-        {character.name}
+        <div className="line-clamp-2">{character.name}</div>
       </div>
     </div>
   );

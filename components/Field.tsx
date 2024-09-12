@@ -3,6 +3,7 @@ import { useDroppable } from "@dnd-kit/core";
 import { cn } from "@/utils/tw";
 
 export default function Field({
+  readonly,
   src,
   num,
   limit,
@@ -20,6 +21,7 @@ export default function Field({
 
   return (
     <div className="relative border-collapse">
+      {readonly && <div className="absolute top-0 bottom-0 left-0 right-0 z-10"></div>}
       <Image src={src} alt="" width={400} height={400} ref={setNodeRef} />
       <div className="absolute top-1/2 left-[15px] transform -translate-y-1/2 bg-red-500 p-1 text-white rounded-lg">
         {name}

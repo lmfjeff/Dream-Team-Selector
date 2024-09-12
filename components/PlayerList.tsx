@@ -64,9 +64,10 @@ export default function PlayerList({
   }, [searchInput, page]);
 
   return (
-    <div className="w-full max-w-[400px] bg-gray-500">
-      <div className="flex justify-between">
+    <div className="w-full max-w-[400px] h-full md:h-[633px] bg-gray-200 scrollbar-hide">
+      <div className="flex justify-between p-1">
         <input
+          className="border px-1"
           placeholder="search..."
           onChange={(e) => debounced(e.target.value)}
         />
@@ -89,7 +90,7 @@ export default function PlayerList({
           <Loading />
         </div>
       ) : (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap p-4 gap-1">
           {characters.map((c: any) => {
             const disabled = squad
               .map((s: any) => s.characterId)
