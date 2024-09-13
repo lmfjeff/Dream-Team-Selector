@@ -20,7 +20,9 @@ export default function CharacterImage({
   return (
     <div ref={setNodeRef} style={style}>
       <img
-        src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+        src={`${character.thumbnail.path.replace("http", "https")}.${
+          character.thumbnail.extension
+        }`}
         className={cn("shadow-lg rounded-full size-[80px] cursor-pointer", {
           "outline outline-green-500 outline-2": selected?.id === character.id,
           "opacity-50": disabled,

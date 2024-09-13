@@ -21,7 +21,9 @@ export default function Field({
 
   return (
     <div className="relative border-collapse">
-      {readonly && <div className="absolute top-0 bottom-0 left-0 right-0 z-10"></div>}
+      {readonly && (
+        <div className="absolute top-0 bottom-0 left-0 right-0 z-10"></div>
+      )}
       <Image src={src} alt="" width={400} height={400} ref={setNodeRef} />
       <div className="absolute top-1/2 left-[15px] transform -translate-y-1/2 bg-red-500 p-1 text-white rounded-lg">
         {name}
@@ -32,7 +34,7 @@ export default function Field({
           {
             "border border-red-500": isDragging || !!selected,
             "bg-[#00800080]": isOver,
-            'cursor-pointer hover:bg-[#00800080]': !!selected
+            "cursor-pointer hover:bg-[#00800080]": !!selected,
           }
         )}
         onClick={() => {
@@ -48,7 +50,10 @@ export default function Field({
             <div key={sq.characterId} className="flex flex-col items-center">
               <div className="relative">
                 <img
-                  src={`${sq.character.thumbnail.path}.${sq.character.thumbnail.extension}`}
+                  src={`${sq.character.thumbnail.path.replace(
+                    "http",
+                    "https"
+                  )}.${sq.character.thumbnail.extension}`}
                   className={cn(
                     "shadow-lg rounded-full size-[50px] cursor-pointer relative"
                   )}
