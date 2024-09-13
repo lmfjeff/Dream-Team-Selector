@@ -137,7 +137,9 @@ export default function Container() {
     } else if (
       numOfPlayerInField >= (fields.find((f) => f.num === fieldId)?.limit || 0)
     ) {
-      alert("Limit exceeded, please remove existing player first");
+      alert("Limit exceeded, please remove existing player from this position");
+    } else if (isFullTeam) {
+      alert("Limit exceeded, please remove existing player");
     } else if (someFieldAlready2 && numOfPlayerInField > 0) {
       alert("Each position need to have at least 1 player");
     } else {

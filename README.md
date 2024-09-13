@@ -5,10 +5,12 @@ Build a 5-a-side soccer team with Marvel characters
 - next.js
 
 ## Feature
-- fetch marvel api
-- desktop / mobile friendly
-- search
-- drag n drop
+- Fetch marvel api for Marvel Characters
+- Desktop / Mobile friendly
+- Search
+- Drag n drop
+- Pagination
+- Share to Social Media / Download Image
 
 ## Local Development Setup
 - sign up for marvel developer api
@@ -22,9 +24,7 @@ npm run dev
 ## Deployment
 - Vercel
 
-## Static export
-
 ## Future Improvement
 - Fetch All Marvel Characters Data into our own DB to avoid hitting rate limit
 - Fetch Marvel Characters from our own DB to improve fetching filter (Marvel API only provide filter by exact name & nameStartsWith)
-- use CDN to cache static page to improve load time
+- Use CDN to cache static page to improve load time
