@@ -86,11 +86,12 @@ export default function PlayerList({
         )}
       </div>
       {fetching ? (
-        <div className="flex justify-center">
+        <div className="flex flex-col items-center">
+          <div>Loading Characters</div>
           <Loading />
         </div>
       ) : (
-        <div className="flex flex-wrap p-4 gap-1">
+        <div className="flex flex-wrap justify-center p-4 gap-1">
           {characters.map((c: any) => {
             const disabled = squad
               .map((s: any) => s.characterId)
