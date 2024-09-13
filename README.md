@@ -12,6 +12,9 @@ Build a 5-a-side soccer team with Marvel characters
 - Pagination
 - Share to Social Media / Download Image
 
+## Technical Consideration
+- Scalability: This is a static site, so it would be quite fast if put behind CDN for caching
+
 ## Local Development Setup
 - sign up for marvel developer api
 - copy .env.sample to .env, fill out .env
@@ -28,3 +31,4 @@ npm run dev
 - Fetch All Marvel Characters Data into our own DB to avoid hitting rate limit
 - Fetch Marvel Characters from our own DB to improve fetching filter (Marvel API only provide filter by exact name & nameStartsWith)
 - Use CDN to cache static page to improve load time
+- Use state management library (e.g. redux) for all the states
