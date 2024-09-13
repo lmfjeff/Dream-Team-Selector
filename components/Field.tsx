@@ -32,6 +32,7 @@ export default function Field({
           {
             "border border-red-500": isDragging || !!selected,
             "bg-[#00800080]": isOver,
+            'cursor-pointer hover:bg-[#00800080]': !!selected
           }
         )}
         onClick={() => {
